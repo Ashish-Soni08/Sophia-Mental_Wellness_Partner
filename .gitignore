@@ -1,3 +1,16 @@
+###############################################
+# Added by Author - Ashish Soni
+
+## 16.01.2024
+/geek_env 
+
+## 16.01.2024
+.env
+
+###############################################
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
