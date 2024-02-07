@@ -1,8 +1,9 @@
-# from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
-# MODEL = "TheBloke/Llama-2-13B-chat-GPTQ"
+MODEL_NAME = "meta-llama/Llama-2-7b-chat-hf"
 
-# llama_pipe = pipeline("text-generation", model=MODEL, device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
 
 # def generate(prompt, max_length=1024, pipe=llama_pipe, **kwargs):
 #     """
