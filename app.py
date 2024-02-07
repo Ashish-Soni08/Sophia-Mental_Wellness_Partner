@@ -1,24 +1,82 @@
 import os
-from pprint import pprint
 
-from constants import ANYSCALE_API_KEY
+from rich import print
 
-from llama_index.llms import Anyscale
-from llama_index.llms import ChatMessage
-from llama_index.llms.anyscale_utils import anyscale_modelname_to_contextsize
+from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 
-size = anyscale_modelname_to_contextsize("Meta-Llama/Llama-Guard-7b")
-print(size)
+import streamlit as st
 
-## Meta
-llama_guard = Anyscale(api_key = ANYSCALE_API_KEY, model = "Meta-Llama/Llama-Guard-7b")
-pprint(llama_guard)
+import streamlit_shadcn_ui as ui
+import streamlit_antd_components as sac
+from streamlit_lottie import st_lottie
+from streamlit_extras.add_vertical_space import add_vertical_space
 
+from constants import (LANGCHAIN_API_KEY, LANGCHAIN_PROJECT, LANGCHAIN_URL,
+                       HF_API_KEY, HF_TOKEN, 
+                       PINECONE_API_KEY)
 
+from utils import load_lottieurl
 
-## Mistral AI
-# llm = Anyscale(api_key = ANYSCALE_API_KEY, model = "mistralai/Mistral-7B-Instruct-v0.1")
+# Set environment variables to enable logging and tracing in LangSmith 
+os.environ["LANGCHAIN_API_KEY"] = LANGCHAIN_API_KEY
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_ENDPOINT"] = LANGCHAIN_URL
+os.environ["LANGCHAIN_PROJECT"] = LANGCHAIN_PROJECT
 
-# message = ChatMessage(role="user", content="What year is it?")
-# resp = llm.chat([message])
-# print(resp)
+# Page Configuration
+st.set_page_config(
+    page_title="Sophia - ",
+    page_icon="random",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+    menu_items={
+        'Report a bug': "https://github.com/Ashish-Soni08/Open-source-AI-Hackathon/issues",
+        'About': "# This is a header. This is an *extremely* cool app!" # TODO: Write a good about message 
+    }
+)
+
+############# SIDE BAR #############
+lottie_anime = load_lottieurl("https://lottie.host/ad7e1c48-37c4-4286-92eb-8393eb31616a/1g3Sdho3Oz.json")
+
+with st.sidebar:
+    st_lottie(lottie_anime, height=230)
+    st.markdown(
+        """
+    ## 
+    **:blue[Sophia]** **Agile AI, Harmonizing Work and Personal Growth**
+    """
+    )
+    
+    sac.menu([
+    sac.MenuItem('About the Author', icon='code-square', children=[
+        sac.MenuItem('Github', icon='github', href="https://github.com/Ashish-Soni08"),
+        sac.MenuItem('Twitter', icon='twitter', href="https://twitter.com/Ashish_Soni08"),
+        sac.MenuItem('Linkedin', icon='linkedin', href="https://www.linkedin.com/in/soni-ashish-2091/"),
+        sac.MenuItem('Hugging Face', icon='hypnotize', href="https://huggingface.co/Ashish08")
+        ]),
+    
+        sac.MenuItem(type='divider'),
+        
+    sac.MenuItem('Built using', icon='wrench-adjustable-circle-fill', children=[
+        sac.MenuItem('HuggingFace', icon='c-circle-fill', href="https://www.clarifai.com/"),
+        sac.MenuItem('Langchain', icon='tools', href="https://www.langchain.com/"),
+        sac.MenuItem('Streamlit', icon='magic', href="https://streamlit.io/")
+        ]),
+    ], 
+        size='lg', variant='filled', open_all=False) 
+###################################
+
+############# APP TITLE  #############
+# Add CSS styling to center the title
+st.markdown(
+    """
+    <style>
+        .title {
+            text-align: center; /* Center title text */
+        }
+    </style>
+    """,
+    unsafe_allow_html=True)
+
+# Display the title in the middle of the page
+st.markdown("<h1 class='title' style='color: purple;'><em>Sophia: </em> <br> <em>  </em></h1>", unsafe_allow_html=True)
