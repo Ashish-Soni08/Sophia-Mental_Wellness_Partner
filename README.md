@@ -4,9 +4,9 @@ organised by  [The Fifth Elephant](https://hasgeek.com/fifthelephant/open-source
 
 ## Setup the Virtual Environment
 
-```bash
+<!-- ```bash
 
-# python version -> 3.10.13
+# python version -> 3.10.13(Github Codespaces) -> 3.10.10(Lightning Studios)
 python -V 
 
 # create a environment named -> geek_env
@@ -15,7 +15,7 @@ python -m venv geek_env
 # activate the environment
 source geek_env/bin/activate
 
-```
+``` -->
 
 ## Chatbot for Mental Well-being
 
