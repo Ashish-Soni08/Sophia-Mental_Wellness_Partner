@@ -1,6 +1,4 @@
-# Open-source-AI-Hackathon
-
-organised by  [The Fifth Elephant](https://hasgeek.com/fifthelephant/open-source-ai-hackathon/)
+# StartUp Idea
 
 ## Setup the Virtual Environment
 
